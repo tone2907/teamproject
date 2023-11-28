@@ -14,9 +14,11 @@ import lombok.*;
 @NoArgsConstructor
 public class CommentLikeEntity {
     @Id
-    @Column(name = "comment_id")
-    private Integer commentId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comment_id")
+    private CommentsEntity commentId;
 
-    @Column(name = "like_id")
-    private Integer likeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "like_id")
+    private LikesEntity likeId;
 }

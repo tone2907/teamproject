@@ -27,7 +27,7 @@ public class CommentsEntity {
     private Integer postId;
 
     @Column(name = "member_id")
-    private Integer memberId;
+    private Integer member;
 
     @Lob
     @Column(name = "content")

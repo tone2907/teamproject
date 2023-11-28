@@ -26,8 +26,9 @@ public class PostsEntity {
     @Column(name = "post_id")
     private long postId;
 
-    @Column(name = "member_id")
-    private String memberId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private MembersEntity member;
 
     @Column(name = "post_type")
     private String postType;
@@ -45,7 +46,7 @@ public class PostsEntity {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
-    @Column(name = "image", length = 255)
+    @Column(name = "image")
     private String image;
 
     @Column(name = "views_count")

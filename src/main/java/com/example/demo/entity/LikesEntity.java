@@ -22,7 +22,7 @@ public class LikesEntity {
     private Long likeId;
 
     @Column(name = "member_id")
-    private Integer memberId;
+    private Integer member;
 
     @Column(name = "create_date")
     private LocalDateTime createDate;

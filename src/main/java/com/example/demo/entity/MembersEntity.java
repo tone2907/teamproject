@@ -18,13 +18,10 @@ public class MembersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     @Column(name = "member_id")
-    private Long memberId;
+    private Long member;
 
-    @Column(name = "reg_id", length = 10, unique = true)
-    private String regId;
-
-    @Column(name = "pw")
-    private String pw;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "TEL", length = 14, unique = true)
     private String tel;
@@ -32,12 +29,15 @@ public class MembersEntity {
     @Column(name = "email", length = 320)
     private String email;
 
-    @Column(name = "nickname", length = 60, unique = true)
-    private String nickname;
+    @Column(name = "name", length = 60, unique = true)
+    private String name;
 
     @Column(name = "delect_status")
     private Integer delectStatus;
 
     @Column(name = "admin_status")
     private Integer adminStatus;
+
+    @Column(name = "role")
+    private Integer role;
 }
