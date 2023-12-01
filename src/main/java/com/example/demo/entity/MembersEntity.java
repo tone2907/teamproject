@@ -5,8 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.Check;
 
 @Table(name = "members", schema = "YNC",
-        indexes = {@Index(name = "IDX_MEMBER_ADMIN_STATUS", columnList = "ADMIN_STATUS"),
-                @Index(name = "IDX_MEMBER_DELECT_STATUS", columnList = "DELECT_STATUS")})
+        indexes = {@Index(name = "IDX_MEMBER_DELECT_STATUS", columnList = "DELECT_STATUS")})
 @SequenceGenerator(name = "member_seq", sequenceName = "member_seq", schema = "YNC", allocationSize = 1)
 @Entity
 @Setter
@@ -33,10 +32,7 @@ public class MembersEntity {
     private String name;
 
     @Column(name = "delect_status")
-    private Integer delectStatus;
-
-    @Column(name = "admin_status")
-    private Integer adminStatus;
+    private Boolean delectStatus;
 
     @Column(name = "role")
     private Integer role;

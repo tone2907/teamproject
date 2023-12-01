@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
                 @Index(name = "IDX_POSTS_POST_TYPE",columnList = "POST_TYPE"),
                 @Index(name = "IDX_POST_REPORT_STATUS",columnList = "REPORT_STATUS"),
                 @Index(name = "IDX_POSTS_VIEWS_COUNT",columnList = "VIEWS_COUNT")})
-@SequenceGenerator(name = "post_seq", sequenceName = "post_seq",schema = "YNC", allocationSize = 1)
+@SequenceGenerator(name = "post_seq", sequenceName = "post_seq", schema = "YNC", allocationSize = 1)
 @Entity
 @Getter
 @Setter
@@ -31,7 +31,7 @@ public class PostsEntity {
     private MembersEntity member;
 
     @Column(name = "post_type")
-    private String postType;
+    private Integer postType;
 
     @Column(name = "title", length = 60, unique = true)
     private String title;
@@ -53,8 +53,14 @@ public class PostsEntity {
     private Integer viewCount;
 
     @Column(name = "delect_status")
-    private Integer delectStatus;
+    private Boolean delectStatus;
 
     @Column(name = "report_status")
-    private Integer reportStatus;
+    private Boolean reportStatus;
+
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
 }
+
