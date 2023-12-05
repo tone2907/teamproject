@@ -31,4 +31,8 @@ public class PostsController {
     public List<PostsListResponseDTO> searchAllDesc(){
         return postsService.searchAllDesc();
     }
+    @DeleteMapping("/posts/{postId}")
+    public void delete(@PathVariable Long postId){
+        postsService.delete(postId);
+    }
 }

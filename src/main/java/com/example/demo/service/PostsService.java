@@ -25,12 +25,12 @@ public class PostsService {
     }
 
     @Transactional
-    public Long update(Long postId, PostsUpdateRequestDTO requestDto) {
+    public Long update(Long postId, PostsUpdateRequestDTO requestDTO) {
         PostsEntity postsEntity = postRepository.findById(postId)
                 .orElseThrow(() -> new
                         IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
-        postsEntity.update(requestDto.getTitle(),
-                requestDto.getContent());
+        postsEntity.update(requestDTO.getTitle(),
+                requestDTO.getContent());
         return postId;
     }
 
@@ -40,10 +40,18 @@ public class PostsService {
                 -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
         return new PostsResponseDTO(postsEntity);
     }
+
     @Transactional(readOnly = true)
     public List<PostsListResponseDTO> searchAllDesc(){
-        return postRepository.findAllByOrderBypostIdDesc().stream()
+        return postRepository.findAll().stream()
                 .map(PostsListResponseDTO::new)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void delete(Long postId){
+        PostsEntity postsEntity = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 존재하지 않습니다."));
+        postRepository.delete(postsEntity);
     }
 }

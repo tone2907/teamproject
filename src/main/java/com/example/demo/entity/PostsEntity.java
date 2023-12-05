@@ -2,9 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.sql.Update;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
 
 @Table(name = "posts", schema = "YNC",

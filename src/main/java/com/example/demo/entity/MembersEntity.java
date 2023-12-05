@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Check;
+
 
 @Table(name = "members", schema = "YNC",
         indexes = {@Index(name = "IDX_MEMBER_DELECT_STATUS", columnList = "DELECT_STATUS")})
