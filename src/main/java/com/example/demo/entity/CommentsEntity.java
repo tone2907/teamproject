@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -21,23 +24,27 @@ public class CommentsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "comment_seq")
     @Column(name = "comment_id")
-    private Long commentId;
+    private Long comment;
 
-    @Column(name = "post_id")
-    private Integer postId;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private PostsEntity postId;
 
-    @Column(name = "member_id")
-    private Integer member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private MembersEntity member;
 
     @Lob
     @Column(name = "content")
     private String content;
 
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    @CreatedDate
+    private String createDate;
 
     @Column(name = "update_date")
-    private LocalDateTime updateDate;
+    @LastModifiedDate
+    private String updateDate;
 
     @Column(name = "delect_status")
     private Integer delectStatus;

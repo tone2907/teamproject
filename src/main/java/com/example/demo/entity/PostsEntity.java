@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name = "posts", schema = "YNC",
         indexes = {@Index(name = "IDX_POSTS_DELECT_STATUS", columnList = "DELECT_STATUS"),
@@ -22,7 +23,7 @@ public class PostsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "post_seq")
     @Column(name = "post_id")
-    private long postId;
+    private Long postId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -56,6 +57,9 @@ public class PostsEntity {
     @Column(name = "report_status")
     private Boolean reportStatus;
 
+    @OneToMany(mappedBy = "postsEntity", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OrderBy("comment asc")
+    private List<CommentsEntity> comments;
     public void update(String title, String content){
         this.title = title;
         this.content = content;
