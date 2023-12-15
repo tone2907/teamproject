@@ -49,4 +49,8 @@ public class CommentsEntity {
 
     @Column(name = "report_status")
     private Integer reportStatus;
+
+    public void update(String content){
+        this.content = content;
+    }
 }

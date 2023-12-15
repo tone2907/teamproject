@@ -27,5 +27,17 @@ public class CommentService {
 
         return dto.getComment();
     }
+    @Transactional
+    public void update(Long postId, Long comment, CommentDTO dto) {
+        CommentsEntity comments = commentRepository.findByPostsIdAndId(postId, comment).orElseThrow(() ->
+                new IllegalArgumentException("해당 댓글이 존재하지 않습니다. " + comment));
+        comments.update(dto.getContent());
+    }
+    @Transactional
+    public void delete(Long postId, Long comment) {
+        CommentsEntity comments = commentRepository.findByPostsIdAndId(postId, comment).orElseThrow(() ->
+                new IllegalArgumentException("해당 댓글이 존재하지 않습니다. id=" + comment));
+        commentRepository.delete(comments);
+    }
 
 }

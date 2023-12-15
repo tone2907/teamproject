@@ -16,5 +16,15 @@ public class CommentController {
     public ResponseEntity commentSave(@PathVariable Long postId, @RequestBody CommentDTO dto){
         return ResponseEntity.ok(commentService.commentSave(postId,dto));
     }
+    @PutMapping({"/Article/{postId}/comment{id}"})
+    public ResponseEntity<Long> update(@PathVariable Long postId, @PathVariable Long comment,@RequestBody CommentDTO dto){
+        commentService.update(postId, comment, dto);
+        return ResponseEntity.ok(comment);
+    }
+    @DeleteMapping({"/Article/{postId}/comments/{id}"})
+    public ResponseEntity<Long> delete(@PathVariable Long postId, @PathVariable Long comment){
+        commentService.delete(postId, comment);
+        return ResponseEntity.ok(comment);
+    }
 
 }
