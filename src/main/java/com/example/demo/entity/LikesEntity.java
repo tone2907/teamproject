@@ -21,8 +21,9 @@ public class LikesEntity {
     @Column(name = "like_id")
     private Long likeId;
 
+    @ManyToOne
     @Column(name = "member_id")
-    private Integer member;
+    private MembersEntity member;
 
     @Column(name = "create_date")
     private LocalDateTime createDate;
