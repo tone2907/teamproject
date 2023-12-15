@@ -6,7 +6,6 @@ import com.example.demo.entity.PostsEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 public class CommentResponseDTO {
@@ -14,8 +13,8 @@ public class CommentResponseDTO {
     private PostsEntity postId;
     private MembersEntity member;
     private String content;
-    private String createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private String updateDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
     private Integer deleteStatus;
     private Integer reportStatus;
 

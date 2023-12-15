@@ -39,12 +39,10 @@ public class CommentsEntity {
     private String content;
 
     @Column(name = "create_date")
-    @CreatedDate
-    private String createDate;
+    private LocalDateTime createDate;
 
     @Column(name = "update_date")
-    @LastModifiedDate
-    private String updateDate;
+    private LocalDateTime updateDate;
 
     @Column(name = "delect_status")
     private Integer delectStatus;

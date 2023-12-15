@@ -17,8 +17,8 @@ public class CommentDTO {
     private PostsEntity postId;
     private MembersEntity member;
     private String content;
-    private String createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private String updateDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
     private Integer deleteStatus;
     private Integer reportStatus;
 
