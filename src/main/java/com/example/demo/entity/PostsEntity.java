@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -43,7 +45,7 @@ public class PostsEntity {
     private LocalDateTime createDate;
 
     @Column(name = "update_date")
-    private LocalDateTime updateDate;
+    private LocalDateTime  updateDate;
 
     @Column(name = "image")
     private String image;
@@ -57,7 +59,7 @@ public class PostsEntity {
     @Column(name = "report_status")
     private Boolean reportStatus;
 
-    @OneToMany(mappedBy = "postsEntity", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "postId", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("comment asc")
     private List<CommentsEntity> comments;
     public void update(String title, String content){

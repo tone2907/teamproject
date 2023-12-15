@@ -3,6 +3,8 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.management.relation.Role;
+
 
 @Table(name = "members", schema = "YNC",
         indexes = {@Index(name = "IDX_MEMBER_DELECT_STATUS", columnList = "DELECT_STATUS")})
@@ -34,6 +36,8 @@ public class MembersEntity {
     @Column(name = "delect_status")
     private Boolean delectStatus;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private Integer role;
+    private Role role;
+
 }

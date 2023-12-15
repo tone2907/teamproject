@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.PostsEntity;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -48,7 +50,12 @@ public class PostsController {
     @GetMapping("/")
     public String index(Model model, @PageableDefault(sort = "postId", direction = Sort.Direction.DESC)
                         Pageable pageable) {
-        model.addAttribute("Posts", postsService.pageList(pageable));
+        Page<PostsEntity> list = postsService.pageList(pageable);
+        model.addAttribute("Posts",list);
+        model.addAttribute("prev",pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next",pageable.next().getPageNumber());
+        model.addAttribute("hasNext",list.hasNext());
+        model.addAttribute("hasPrev",list.hasPrevious());
         return "index";
     }
 }

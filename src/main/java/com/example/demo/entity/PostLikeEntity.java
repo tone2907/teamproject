@@ -14,9 +14,11 @@ import lombok.*;
 @NoArgsConstructor
 public class PostLikeEntity {
     @Id
+    @ManyToOne
     @Column(name = "post_id",unique = true)
-    private Integer postId;
+    private PostsEntity postId;
 
+    @ManyToOne
     @Column(name = "like_id",unique = true)
-    private Integer likeId;
+    private LikesEntity likeId;
 }
